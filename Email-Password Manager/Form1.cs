@@ -83,7 +83,15 @@ namespace WindowsFormsApp1
             {
                 streamWriter.WriteLine(obj.ToString());
             }
-            File.Encrypt(filepath + savefileName);
+            try
+            {
+                File.Encrypt(filepath + savefileName);
+            }
+            catch (Exception ex) 
+            { 
+                Console.Write(ex.ToString(), "file is not able to be encrypted.");
+                Console.Write("You must be running the pro version of windows 11 to encrypt files.");
+            }
             streamWriter.Close();
         }
 
@@ -93,7 +101,15 @@ namespace WindowsFormsApp1
                 Console.WriteLine("Error: file does not exist");
             else
             {
-                File.Decrypt(savefilePath + savefileName);
+                try
+                {
+                    File.Decrypt(savefilePath + savefileName);
+                }
+                catch(Exception ex) 
+                {
+                    
+                    Console.Write(ex.ToString(), "file is not able to be decrypted.");
+                }
                 FileStream fileStream = File.OpenRead(savefilePath + savefileName);
                 using (StreamReader streamReader = new StreamReader(fileStream))
                 {

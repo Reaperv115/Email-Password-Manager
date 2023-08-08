@@ -43,7 +43,7 @@
             // 
             // WebsiteName
             // 
-            this.WebsiteName.Location = new System.Drawing.Point(12, 46);
+            this.WebsiteName.Location = new System.Drawing.Point(53, 46);
             this.WebsiteName.Name = "WebsiteName";
             this.WebsiteName.Size = new System.Drawing.Size(199, 22);
             this.WebsiteName.TabIndex = 0;
@@ -61,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 27);
+            this.label1.Location = new System.Drawing.Point(90, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 16);
             this.label1.TabIndex = 3;
@@ -70,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 95);
+            this.label2.Location = new System.Drawing.Point(90, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 16);
             this.label2.TabIndex = 4;
@@ -78,7 +78,7 @@
             // 
             // EmailAddress
             // 
-            this.EmailAddress.Location = new System.Drawing.Point(13, 114);
+            this.EmailAddress.Location = new System.Drawing.Point(53, 114);
             this.EmailAddress.Name = "EmailAddress";
             this.EmailAddress.Size = new System.Drawing.Size(198, 22);
             this.EmailAddress.TabIndex = 5;
@@ -86,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 189);
+            this.label3.Location = new System.Drawing.Point(108, 159);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 6;
@@ -94,7 +94,7 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(13, 208);
+            this.Password.Location = new System.Drawing.Point(53, 178);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(198, 22);
             this.Password.TabIndex = 7;
