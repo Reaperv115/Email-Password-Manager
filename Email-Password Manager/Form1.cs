@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    
     struct Entry
     {
         public string websiteOpt;
@@ -20,13 +12,14 @@ namespace WindowsFormsApp1
     }
     public partial class Form1 : Form
     {
+        MouseButtons mouseButtons = MouseButtons.None;
         Entry entry;
         string savefileName = "/savefile.docx";
         string savefilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         public Form1()
         {
             InitializeComponent();
-            listBox1.Items.Clear();
+            listView1.Items.Clear();
         }
 
         private void AddName_Click(object sender, EventArgs e)
@@ -38,11 +31,11 @@ namespace WindowsFormsApp1
             if (WebsiteName.Text != null)
             {
                 entry.websiteOpt = WebsiteName.Text;
-                listBox1.Items.Add(entry.websiteOpt);
+                listView1.Items.Add(entry.websiteOpt);
             }
-            listBox1.Items.Add(entry.email);
-            listBox1.Items.Add(entry.passWord);
-            listBox1.Items.Add(space);
+            listView1.Items.Add(entry.email);
+            listView1.Items.Add(entry.passWord);
+            listView1.Items.Add(space);
 
             if (WebsiteName.Text != null)
                 WebsiteName.Text = "";
@@ -59,11 +52,10 @@ namespace WindowsFormsApp1
 
         private void DeleteEntryBtn_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex == -1)
-                Console.WriteLine("please elect an item first");
-            else
+            foreach (ListViewItem item in listView1.Items)
             {
-                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                if (item.Selected)
+                    listView1.Items.RemoveAt(item.Index);
             }
         }
         
@@ -79,7 +71,7 @@ namespace WindowsFormsApp1
 
             File.Create(filepath + savefileName).Dispose();
             StreamWriter streamWriter = new StreamWriter(filepath + savefileName, false);
-            foreach (object obj in listBox1.Items)
+            foreach (object obj in listView1.Items)
             {
                 streamWriter.WriteLine(obj.ToString());
             }
@@ -115,9 +107,12 @@ namespace WindowsFormsApp1
                 {
                     string line;
                     while ((line = streamReader.ReadLine()) != null)
-                        listBox1.Items.Add(line);
+                        listView1.Items.Add(line);
                 }
             }
         }
+
+
+        
     }
 }

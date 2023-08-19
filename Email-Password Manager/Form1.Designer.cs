@@ -35,10 +35,10 @@
             this.EmailAddress = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.DeleteEntryBtn = new System.Windows.Forms.Button();
             this.LoadBtn = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // WebsiteName
@@ -52,7 +52,7 @@
             // 
             this.AddEntryBtn.Location = new System.Drawing.Point(7, 251);
             this.AddEntryBtn.Name = "AddEntryBtn";
-            this.AddEntryBtn.Size = new System.Drawing.Size(122, 23);
+            this.AddEntryBtn.Size = new System.Drawing.Size(76, 23);
             this.AddEntryBtn.TabIndex = 1;
             this.AddEntryBtn.Text = "Add Entry";
             this.AddEntryBtn.UseVisualStyleBackColor = true;
@@ -99,15 +99,6 @@
             this.Password.Size = new System.Drawing.Size(198, 22);
             this.Password.TabIndex = 7;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(313, 2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(475, 436);
-            this.listBox1.TabIndex = 8;
-            // 
             // SaveBtn
             // 
             this.SaveBtn.Location = new System.Drawing.Point(7, 349);
@@ -120,9 +111,9 @@
             // 
             // DeleteEntryBtn
             // 
-            this.DeleteEntryBtn.Location = new System.Drawing.Point(166, 251);
+            this.DeleteEntryBtn.Location = new System.Drawing.Point(89, 251);
             this.DeleteEntryBtn.Name = "DeleteEntryBtn";
-            this.DeleteEntryBtn.Size = new System.Drawing.Size(107, 23);
+            this.DeleteEntryBtn.Size = new System.Drawing.Size(95, 23);
             this.DeleteEntryBtn.TabIndex = 10;
             this.DeleteEntryBtn.Text = "Delete Entry";
             this.DeleteEntryBtn.UseVisualStyleBackColor = true;
@@ -138,15 +129,24 @@
             this.LoadBtn.UseVisualStyleBackColor = true;
             this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(362, 12);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(426, 426);
+            this.listView1.TabIndex = 12;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.LoadBtn);
             this.Controls.Add(this.DeleteEntryBtn);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.EmailAddress);
@@ -170,10 +170,10 @@
         private System.Windows.Forms.TextBox EmailAddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Password;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button DeleteEntryBtn;
         private System.Windows.Forms.Button LoadBtn;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 
