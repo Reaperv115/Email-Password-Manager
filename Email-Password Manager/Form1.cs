@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Windows.Forms;
 
@@ -12,30 +13,27 @@ namespace WindowsFormsApp1
     }
     public partial class Form1 : Form
     {
-        MouseButtons mouseButtons = MouseButtons.None;
-        Entry entry;
         string savefileName = "/savefile.docx";
         string savefilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         public Form1()
         {
             InitializeComponent();
-            listView1.Items.Clear();
+            InitializeColumns();
+            //listView1.View = View.Details;
+            //listView1.LabelEdit = true;
+            //listView1.Columns.Add("Website(optional)", -2, HorizontalAlignment.Left);
+            //listView1.Columns.Add("Username/Email", 130, HorizontalAlignment.Left);
+            //listView1.Columns.Add("Password", -2, HorizontalAlignment.Left);
         }
 
         private void AddName_Click(object sender, EventArgs e)
         {
-            entry = new Entry();
-            entry.email = EmailAddress.Text;
-            entry.passWord = Password.Text;
-            string space = "";
-            if (WebsiteName.Text != null)
-            {
-                entry.websiteOpt = WebsiteName.Text;
-                listView1.Items.Add(entry.websiteOpt);
-            }
-            listView1.Items.Add(entry.email);
-            listView1.Items.Add(entry.passWord);
-            listView1.Items.Add(space);
+            string[] entries = new string[3];
+            entries[0] = EmailAddress.Text.Trim();
+            entries[1] = Password.Text.Trim();
+            entries[2] = Password.Text.Trim();
+            string[] row = { entries[0], entries[1], entries[2] };
+            dataGridView1.Rows.Add(row);
 
             if (WebsiteName.Text != null)
                 WebsiteName.Text = "";
@@ -52,11 +50,11 @@ namespace WindowsFormsApp1
 
         private void DeleteEntryBtn_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listView1.Items)
-            {
-                if (item.Selected)
-                    listView1.Items.RemoveAt(item.Index);
-            }
+            //foreach (ListViewItem item in listView1.Items)
+            //{
+            //    if (item.Selected)
+            //        listView1.Items.RemoveAt(item.Index);
+            //}
         }
         
         // if the file already exists,
@@ -71,10 +69,10 @@ namespace WindowsFormsApp1
 
             File.Create(filepath + savefileName).Dispose();
             StreamWriter streamWriter = new StreamWriter(filepath + savefileName, false);
-            foreach (object obj in listView1.Items)
-            {
-                streamWriter.WriteLine(obj.ToString());
-            }
+            //foreach (object obj in listView1.Items)
+            //{
+            //    streamWriter.WriteLine(obj.ToString());
+            //}
             try
             {
                 File.Encrypt(filepath + savefileName);
@@ -106,13 +104,24 @@ namespace WindowsFormsApp1
                 using (StreamReader streamReader = new StreamReader(fileStream))
                 {
                     string line;
-                    while ((line = streamReader.ReadLine()) != null)
-                        listView1.Items.Add(line);
+                    //while ((line = streamReader.ReadLine()) != null)
+                    //    listView1.Items.Add(line);
                 }
             }
         }
 
-
+        private void InitializeColumns()
+        {
+            DataGridViewColumn column1 = new DataGridViewTextBoxColumn();
+            DataGridViewColumn column2 = new DataGridViewTextBoxColumn();
+            DataGridViewColumn column3 = new DataGridViewTextBoxColumn();
+            column1.Name = "Website(optional)";
+            column2.Name = "Username/Email";
+            column3.Name = "Password";
+            dataGridView1.Columns.Add(column1);
+            dataGridView1.Columns.Add(column2);
+            dataGridView1.Columns.Add(column3);
+        }
         
     }
 }
