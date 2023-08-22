@@ -19,11 +19,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             InitializeColumns();
-            //listView1.View = View.Details;
-            //listView1.LabelEdit = true;
-            //listView1.Columns.Add("Website(optional)", -2, HorizontalAlignment.Left);
-            //listView1.Columns.Add("Username/Email", 130, HorizontalAlignment.Left);
-            //listView1.Columns.Add("Password", -2, HorizontalAlignment.Left);
         }
 
         private void AddName_Click(object sender, EventArgs e)
@@ -50,11 +45,11 @@ namespace WindowsFormsApp1
 
         private void DeleteEntryBtn_Click(object sender, EventArgs e)
         {
-            //foreach (ListViewItem item in listView1.Items)
-            //{
-            //    if (item.Selected)
-            //        listView1.Items.RemoveAt(item.Index);
-            //}
+            foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+            {
+                if (item.Selected)
+                    dataGridView1.Rows.RemoveAt(item.Index);
+            }
         }
         
         // if the file already exists,
@@ -112,6 +107,7 @@ namespace WindowsFormsApp1
 
         private void InitializeColumns()
         {
+            dataGridView1.AllowUserToAddRows = false;
             DataGridViewColumn column1 = new DataGridViewTextBoxColumn();
             DataGridViewColumn column2 = new DataGridViewTextBoxColumn();
             DataGridViewColumn column3 = new DataGridViewTextBoxColumn();
