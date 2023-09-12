@@ -29,13 +29,13 @@ namespace WindowsFormsApp1
             entries[1] = EmailAddress.Text.Trim();
             entries[2] = Password.Text.Trim();
             string[] row = { entries[0], entries[1], entries[2] };
-            dataGridView1.Rows.Add(row);
+            table.Rows.Add(row);
 
             if (WebsiteName.Text != null)
                 WebsiteName.Text = "";
             EmailAddress.Text = "";
             Password.Text = "";
-            //dataGridView1.DataSource = table;
+            dataGridView1.DataSource = table;
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
@@ -66,12 +66,12 @@ namespace WindowsFormsApp1
             File.Create(filepath + savefileName).Dispose();
             using (TextWriter tw = new StreamWriter(filepath + savefileName))
             {
-                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                for (int i = 0; i < table.Rows.Count; ++i)
                 {
-                    for (int j = 0; j < dataGridView1.Columns.Count; ++j)
+                    for (int j = 0; j < table.Columns.Count; ++j)
                     {
-                        tw.Write(dataGridView1.Rows[i].Cells[j].Value.ToString());
-                        if (j != dataGridView1.Columns.Count)
+                        tw.Write(table.Rows[i].ItemArray[j].ToString());
+                        if (j != table.Columns.Count)
                         {
                             tw.Write(" ");
                         }
@@ -79,13 +79,7 @@ namespace WindowsFormsApp1
                     tw.WriteLine();
                 }
             }
-            //StreamWriter streamWriter = new StreamWriter(filepath + savefileName, false);
-            //foreach (object obj in dataGridView1.Rows)
-            //{
-            //    streamWriter.WriteLine(obj.ToString());
-            //}
-            
-            //streamWriter.Close();
+
         }
 
         private void LoadBtn_Click(object sender, EventArgs e)
@@ -94,16 +88,16 @@ namespace WindowsFormsApp1
                 Console.WriteLine("Error: file does not exist");
             else
             {
-                
+
                 try
                 {
                     File.Decrypt(savefilePath + savefileName);
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
-                    
                     Console.Write(ex.ToString(), "file is not able to be decrypted.");
                 }
+
                 string[] lines = File.ReadAllLines(savefilePath + savefileName);
                 string[] values;
 
@@ -118,8 +112,8 @@ namespace WindowsFormsApp1
                     table.Rows.Add(row);
                 }
                 dataGridView1.DataSource = table;
-                
-            }
+
+                }
         }
 
         private void InitializeColumns()
@@ -134,6 +128,7 @@ namespace WindowsFormsApp1
             table.Columns.Add(column1);
             table.Columns.Add(column2);
             table.Columns.Add(column3);
+            dataGridView1.DataSource = table;
         }
 
     }
